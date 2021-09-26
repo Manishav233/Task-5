@@ -1,4 +1,26 @@
-﻿1. (function(){
+﻿Question 1 Do the below programs in anonymous function & IIFE
+ 
+ a. Print odd numbers in an array
+ 
+ * Anonymous Function
+ 
+  const res=function(){
+   arr=[10,20,3,45];
+    for(var i=0;i<arr.length;i++)
+    {
+        if(arr[i]%2!==0)
+        {
+            console.log(arr[i]);
+        }
+    }
+};
+res(); 
+
+output: 3 45
+
+* IIFE
+
+ (function(){
    arr=[10,20,3,45];
     for(var i=0;i<arr.length;i++)
     {
@@ -13,8 +35,26 @@
 Output: 3 45
 
 
-2. function toTitleCase(str) {
-  return str.toLowerCase().split(' ').map(function (word) {
+b. Convert all the strings to title caps in a string array
+
+* Anonymous Function
+
+const res=function(str) {
+  return str.toLowerCase().split(' ').map(function (word) 
+  {
+    return (word.charAt(0).toUpperCase() + word.slice(1));
+  }).join(' ');
+};
+
+console.log(res("welcome to w3docs"));
+
+output: Welcome To W3docs
+
+* IIFE
+
+function toTitleCase(str) {
+  return str.toLowerCase().split(' ').map(function (word) 
+  {
     return (word.charAt(0).toUpperCase() + word.slice(1));
   }).join(' ');
 }
@@ -24,9 +64,28 @@ console.log(toTitleCase("welcome to w3docs"));
 Output: Welcome To W3docs
 
 
+c. Sum of all numbers in an array
+
+* Anonymous Function
+
+const res=function(){
+    var arr=[10,20,30,40];
+  var sum=0;
+    
+    for (i=0;i<arr.length;i++)
+    {
+      sum+=arr[i];  
+    }
+    console.log(sum);
+};
+res();
 
 
-3.(function sum(){
+Output: 100
+
+* IIFE
+
+(function(){
     var arr=[10,20,30,40];
   var sum=0;
     
@@ -37,11 +96,53 @@ Output: Welcome To W3docs
     console.log(sum);
 })();
 
+output: 100
 
-Output: 100
+
+d. Return all the prime numbers in an array
+
+* Anonymous function
+
+const res=function prime(){
+    var arr=[1,3,6,67,89,2,7,9,13];
+    
+for(var i=0; i<arr.length; i++){
+     var isPrime = true;
+     
+     if(arr[i]===1)
+     isPrime=false;
+     
+     else{
+       
+       for (var j=2; j<arr[i]; j++){
 
 
-4. (function prime(){
+            if(arr[i]%j===0){
+                isPrime = false;
+                break;
+            }
+        }   
+     }
+   if(isPrime)
+            console.log(arr[i]);
+
+
+}
+};
+res();
+
+Output:
+3
+67
+89
+2
+7
+13
+
+
+* IIFE
+
+(function prime(){
     var arr=[1,3,6,67,89,2,7,9,13];
     
 for(var i=0; i<arr.length; i++){
@@ -78,11 +179,39 @@ Output:
 13
 
 
-5.(function(){
+e.Return all the palindromes in an array
+
+* Anonymous function
+
+const res=function(){
      var string = ['guvi','madam','pen'];
 for(var j=0;j<string.length;j++)
    {
      
+let str = string[j];
+let strReverse = str.split("").reverse().join("");
+
+
+if (str === strReverse) {
+  console.log(str+" is a palindrome");
+} else {
+  console.log(str+" is not a palindrome");
+}
+}
+};
+res();
+
+Output:
+guvi is not a palindrome
+madam is a palindrome
+pen is not a palindrome
+
+* IIFE
+
+(function(){
+var string = ['guvi','madam','pen'];
+for(var j=0;j<string.length;j++)
+   {
 let str = string[j];
 let strReverse = str.split("").reverse().join("");
 
@@ -102,14 +231,13 @@ madam is a palindrome
 pen is not a palindrome
 
 
+f.Return median of two sorted arrays of same size
 
+* IIFE
 
-
-
-6.(function()
+(function()
 {
-    
-    var x;
+     var x;
     var med;
 var arr=[10,20,30,40,50,60];
     if(arr.length%2!==0)
@@ -117,7 +245,6 @@ var arr=[10,20,30,40,50,60];
         x=parseInt(arr.length/2);
         med=arr[x];
          console.log(med);
-        
     }
     else
     {
@@ -125,15 +252,63 @@ var arr=[10,20,30,40,50,60];
         med=((arr[x]+arr[x+1])/2);
          console.log(med);
       
-    }
-
-
-   
+    }   
 })();
+output: 35
 
+* Anonymous Function
 
+var res=function()
+{
+     var x;
+    var med;
+var arr=[10,20,30,40,50,60];
+    if(arr.length%2!==0)
+    {
+        x=parseInt(arr.length/2);
+        med=arr[x];
+         console.log(med);
+    }
+    else
+    {
+      x=parseInt(arr.length/2)-1;
+        med=((arr[x]+arr[x+1])/2);
+         console.log(med);
+      
+    }   
+};
+res();
+
+output:35
  
-7.(function(){
+g.Remove duplicates from an array
+
+* Anonymous function
+
+const res=function(){
+let a=[1,2,3,1,2,5,6];
+let b=[];
+let temp;
+a.sort();
+len=a.length;
+for (let i=0;i<len;i++)
+{
+    if(a[i]!==temp)
+    {
+        b.push(a[i]);
+        temp=a[i];
+    }
+    
+}
+console.log(b);
+};
+res();
+
+output: [ 1, 2, 3, 5, 6 ]
+
+* IIFE
+
+(function(){
 let a=[1,2,3,1,2,5,6];
 let b=[];
 let temp;
@@ -155,10 +330,37 @@ console.log(b);
 Output: [ 1, 2, 3, 5, 6 ]
 
 
-8. const numRotations = 2;
+h. Rotate an array by k times
+
+* Anonymous Function
+
+const numRotations = 2;
 let sampleArray = [1, 2, 3, 4, 5];
 console.log("Original array : "+sampleArray);
-(function(arr, rotations) {
+
+const res=function(arr, rotations) {
+  const rotatedArray = arr.concat();
+  for (let i = 0; i < rotations; i++)
+  {
+    const frontItem = rotatedArray.shift();
+    rotatedArray.push(frontItem);
+  }
+ console.log("Array after rotatating :"+rotatedArray);
+};
+res(sampleArray,numRotations);
+
+output: 
+Original array : 1,2,3,4,5
+Array after rotatating :3,4,5,1,2
+
+*IIFE
+
+const numRotations = 2;
+let sampleArray = [1, 2, 3, 4, 5];
+console.log("Original array : "+sampleArray);
+
+(function(arr, rotations) 
+{
   const rotatedArray = arr.concat();
   for (let i = 0; i < rotations; i++) {
     const frontItem = rotatedArray.shift();
@@ -167,17 +369,17 @@ console.log("Original array : "+sampleArray);
  console.log("Array after rotatating :"+rotatedArray);
 })(sampleArray,numRotations);
 
-
-
-
 Output:
-
 
 Original array : 1,2,3,4,5
 Array after rotatating :3,4,5,1,2
 
+Question 3
 
-1.var odd_no=arr=>{
+Do the below programs in arrow functions
+a.Print odd numbers in an array
+
+var odd_no=arr=>{
     for(var i=0;i<arr.length;i++)
     {
     if(arr[i]%2!==0)
@@ -193,7 +395,9 @@ Output:
 25
 
 
-2: let toTitleCase= str => {
+b. Convert all the strings to title caps in a string array
+
+let toTitleCase= str => {
   return str.toLowerCase().split(' ').map(function (word) {
     return (word.charAt(0).toUpperCase() + word.slice(1));
   }).join(' ');
@@ -204,11 +408,9 @@ console.log(toTitleCase("welcome to guvi"));
 Output: Welcome To Guvi
 
 
+c. Sum of all numbers in an array
 
-
-
-
-3. var sum_no=arr=>{
+var sum_no=arr=>{
     for(var i=0;i<arr.length;i++)
     {
   sum+=arr[i];
@@ -219,13 +421,12 @@ arr=[1,2,3,4];
 let sum=0;
 sum_no(arr);
 
-
-
-
 Output: 10
 
 
-4.const newArray = [1, 3, 2, 5, 7];
+d. Return all the prime numbers in an array
+
+const newArray = [1, 3, 2, 5, 7];
 const isPrime = num => {
   for (let i = 2; i < num; i++) {
     if (num % i === 0) return false;
@@ -233,14 +434,13 @@ const isPrime = num => {
   return num !== 1;
 };
 
-
-
-
 const myPrimeArray = newArray.filter(isPrime);
 console.log(myPrimeArray);
 
 
-5.var validatePalin= (string) =>{  
+e. Return all the palindromes in an array
+
+var validatePalin= (string) =>{  
   const len = string.length;  
   for (let i = 0; i < len / 2; i++) {  
   if (string[i] !== string[len - 1 - i]) 
